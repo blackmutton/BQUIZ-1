@@ -18,4 +18,4 @@ foreach ($_POST['id'] as $key => $id) {
         $pdo->exec($sql);
     }
 }
-header("location:../admin.php?do=title");
+to("../admin.php?do=title");
