@@ -11,8 +11,7 @@
 					<td></td>
 				</tr>
 				<?php
-				$dsn = "mysql:host=localhost;charset=utf8;dbname=dbno1";
-				$pdo = new PDO($dsn, 'root', '');
+				
 				$sql = "select * from title";
 				$rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 				// print_r($rows);
