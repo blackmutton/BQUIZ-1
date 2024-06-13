@@ -117,4 +117,5 @@ function dd($array)
     echo "</pre>";
 }
 
-$Title=new DB('title');
+$Title = new DB('title');
+$Ad = new DB('ad');
