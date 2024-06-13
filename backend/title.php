@@ -1,6 +1,6 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
 	<p class="t cent botli">網站標題管理</p>
-	<form method="post" target="back" action="?do=tii">
+	<form method="post" action="./api/edit_title.php">
 		<table width="100%">
 			<tbody>
 				<tr class="yel">
@@ -10,6 +10,34 @@
 					<td width="7%">刪除</td>
 					<td></td>
 				</tr>
+				<?php
+				$dsn = "mysql:host=localhost;charset=utf8;dbname=dbno1";
+				$pdo = new PDO($dsn, 'root', '');
+				$sql = "select * from title";
+				$rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+				// print_r($rows);
+				foreach ($rows as $row) {
+				?>
+					<tr class="cent">
+						<td width="45%">
+							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 300px;height:30px;">
+						</td>
+						<td width="23%">
+							<input type="text" name="txt[]" id="txt" value="<?= $row['txt']; ?>">
+						</td>
+						<td width="7%">
+							<input type="radio" name="show" value="<?= $row['id'] ?>" <?= ($row['show'] == 1) ? "checked" : ""; ?>>
+						</td>
+						<td width="7%">
+							<input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+						</td>
+						<td>
+							<input type="hidden" name="id[]" value="<?= $row['id'] ?>">
+						</td>
+					</tr>
+				<?php
+				}
+				?>
 			</tbody>
 		</table>
 		<table style="margin-top:40px; width:70%;">
