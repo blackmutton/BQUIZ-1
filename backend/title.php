@@ -11,10 +11,11 @@
 					<td></td>
 				</tr>
 				<?php
-				
+
 				// $sql = "select * from title";
 				// $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-				$rows=q("select * from title");
+				// $rows=q("select * from title");
+				$rows = $Title->all();
 				// print_r($rows);
 				foreach ($rows as $row) {
 				?>

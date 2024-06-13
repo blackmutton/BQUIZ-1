@@ -116,3 +116,5 @@ function dd($array)
     print_r($array);
     echo "</pre>";
 }
+
+$Title=new DB('title');
