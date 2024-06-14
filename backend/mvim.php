@@ -20,9 +20,9 @@
 				?>
 					<tr class="cent">
 						<td width="70%">
-							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 300px;height:30px;">
+							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 300px;height:400px;">
 						</td>
-						
+
 						<td width="10%">
 							<input type="radio" name="show" value="<?= $row['id'] ?>" <?= ($row['show'] == 1) ? "checked" : ""; ?>>
 						</td>
@@ -42,9 +42,9 @@
 		<table style="margin-top:40px; width:70%;">
 			<tbody>
 				<tr>
-					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/title.php')" value="新增網站標題圖片"></td>
+					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/<?= $do; ?>.php')" value="新增網站標題圖片"></td>
 					<td class="cent">
-						<input type="hidden" name="table"value=<?=$do;?>>
+						<input type="hidden" name="table" value=<?= $do; ?>>
 						<input type="submit" value="修改確定">
 						<input type="reset" value="重置">
 					</td>

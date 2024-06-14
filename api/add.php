@@ -3,8 +3,8 @@ include_once "base.php";
 $do = $_POST['table'];
 $db = ${ucfirst($do)};
 
-if (!empty($_FILES['img']['tmp-name'])) {
-    move_uploaded_file($_FILES['img']['tmp-name'], "../images" . $_FILES['img']['name']);
+if (!empty($_FILES['img']['tmp_name'])) {
+    move_uploaded_file($_FILES['img']['tmp_name'], "../images" . $_FILES['img']['name']);
     $_POST['img'] = $_FILES['img']['name'];
 }
 unset($_POST['table']);
