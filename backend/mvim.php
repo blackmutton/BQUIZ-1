@@ -1,13 +1,12 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-	<p class="t cent botli">網站標題管理</p>
+	<p class="t cent botli">動畫圖片管理</p>
 	<form method="post" action="./api/edit.php">
 		<table width="100%">
 			<tbody>
 				<tr class="yel">
-					<td width="45%">網站標題</td>
-					<td width="23%">替代文字</td>
-					<td width="7%">顯示</td>
-					<td width="7%">刪除</td>
+					<td width="70%">動畫圖片</td>
+					<td width="10%">顯示</td>
+					<td width="10%">刪除</td>
 					<td></td>
 				</tr>
 				<?php
@@ -15,21 +14,19 @@
 				// $sql = "select * from title";
 				// $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 				// $rows=q("select * from title");
-				$rows = $Title->all();
+				$rows = $Mvim->all();
 				// print_r($rows);
 				foreach ($rows as $row) {
 				?>
 					<tr class="cent">
-						<td width="45%">
+						<td width="70%">
 							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 300px;height:30px;">
 						</td>
-						<td width="23%">
-							<input type="text" name="txt[]" id="txt" value="<?= $row['txt']; ?>">
-						</td>
-						<td width="7%">
+						
+						<td width="10%">
 							<input type="radio" name="show" value="<?= $row['id'] ?>" <?= ($row['show'] == 1) ? "checked" : ""; ?>>
 						</td>
-						<td width="7%">
+						<td width="10%">
 							<input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
 						</td>
 						<td>
