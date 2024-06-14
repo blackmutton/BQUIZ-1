@@ -1,6 +1,7 @@
 <?php
 include "base.php";
 // print_r($_POST['id']);
+dd($_POST);
 
 foreach ($_POST['id'] as $key => $id) {
     // print_r($key);
@@ -20,7 +21,9 @@ foreach ($_POST['id'] as $key => $id) {
         $row = $Title->find($id);
         $row['txt'] = $_POST['txt'][$key];
         $row['show'] = (isset($_POST['show']) && $_POST['show'] == $id) ? 1 : 0;
-        $Title->save($row);
+        // $Title->save($row);
     }
 }
-to("../admin.php?do=title");
+unset($_POST['table']);
+dd($_POST);
+// to("../admin.php?do=title");

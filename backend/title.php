@@ -45,7 +45,11 @@
 			<tbody>
 				<tr>
 					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/title.php')" value="新增網站標題圖片"></td>
-					<td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
+					<td class="cent">
+						<input type="hidden" name="table"value=<?=$do;?>>
+						<input type="submit" value="修改確定">
+						<input type="reset" value="重置">
+					</td>
 				</tr>
 			</tbody>
 		</table>
