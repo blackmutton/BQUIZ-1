@@ -1,10 +1,10 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-	<p class="t cent botli">動畫圖片管理</p>
+	<p class="t cent botli">校園印象圖片管理</p>
 	<form method="post" action="./api/edit.php">
 		<table width="100%">
 			<tbody>
 				<tr class="yel">
-					<td width="70%">動畫圖片</td>
+					<td width="70%">校園印象圖片</td>
 					<td width="10%">顯示</td>
 					<td width="10%">刪除</td>
 					<td></td>
@@ -20,7 +20,7 @@
 				?>
 					<tr class="cent">
 						<td width="70%">
-							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 200px;height:200px;">
+							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 100px;height:68px;">
 						</td>
 
 						<td width="10%">

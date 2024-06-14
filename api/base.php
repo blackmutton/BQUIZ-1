@@ -121,3 +121,7 @@ function dd($array)
 $Title = new DB('title');
 $Ad = new DB('ad');
 $Mvim = new DB('mvim');
+$Image = new DB('image');
+$News = new DB('news');
+$Menu = new DB('menu');
+$Admin = new DB('admin');

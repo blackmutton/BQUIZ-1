@@ -14,7 +14,7 @@
 				// $sql = "select * from title";
 				// $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 				// $rows=q("select * from title");
-				$rows = $Ad->all();
+				$rows = ${ucfirst($do)}->all();
 				// print_r($rows);
 				foreach ($rows as $row) {
 				?>
@@ -40,7 +40,7 @@
 		<table style="margin-top:40px; width:70%;">
 			<tbody>
 				<tr>
-					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/ad.php')" value="新增動態文字廣告"></td>
+					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/<?= $do; ?>.php')" value="新增動態文字廣告"></td>
 					<td class="cent">
 					<input type="hidden" name="table" value="<?= $do; ?>">
 						<input type="submit" value="修改確定">
