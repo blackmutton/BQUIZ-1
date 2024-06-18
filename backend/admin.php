@@ -1,11 +1,11 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-	<p class="t cent botli">校園映像圖片管理</p>
+	<p class="t cent botli">管理員管理</p>
 	<form method="post" action="./api/edit.php">
 		<table width="100%">
 			<tbody>
 				<tr class="yel">
-					<td width="70%">校園映像圖片</td>
-					<td width="10%">顯示</td>
+					<td width="80%">帳號</td>
+					<td width="10%">密碼</td>
 					<td width="10%">刪除</td>
 					<td></td>
 				</tr>
@@ -19,17 +19,15 @@
 				foreach ($rows as $row) {
 				?>
 					<tr class="cent">
-						<td width="70%">
-							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 100px;height:68px;">
+						<td width="45%">
+							<input type="text" name="acc[]" id="txt" value="<?= $row['acc']; ?>" style="width:98%">
 						</td>
-
-						<td width="10%">
-							<input type="radio" name="show" value="<?= $row['id'] ?>" <?= ($row['show'] == 1) ? "checked" : ""; ?>>
+						<td width="45%">
+							<input type="password" name="pw[]" value="<?= $row['pw'] ?>" style="width:98%">
 						</td>
 						<td width="10%">
 							<input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
 						</td>
-						<td><input type='button' value='更新圖片' onclick="op('#cover','#cvr','./modals/<?= $do; ?>_update.php?id=<?= $row['id']; ?>')"></td>
 						<td>
 							<input type="hidden" name="id[]" value="<?= $row['id'] ?>">
 						</td>
@@ -42,9 +40,9 @@
 		<table style="margin-top:40px; width:70%;">
 			<tbody>
 				<tr>
-					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/<?= $do; ?>.php')" value="新增校園映像圖片"></td>
+					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/<?= $do; ?>.php')" value="新增管理者"></td>
 					<td class="cent">
-						<input type="hidden" name="table" value=<?= $do; ?>>
+					<input type="hidden" name="table" value="<?= $do; ?>">
 						<input type="submit" value="修改確定">
 						<input type="reset" value="重置">
 					</td>

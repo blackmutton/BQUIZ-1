@@ -1,10 +1,12 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-	<p class="t cent botli">校園映像圖片管理</p>
+	<p class="t cent botli">主選單管理</p>
 	<form method="post" action="./api/edit.php">
 		<table width="100%">
 			<tbody>
 				<tr class="yel">
-					<td width="70%">校園映像圖片</td>
+					<td width="30%">選單文字</td>
+					<td width="30%">超連結</td>
+					<td width="10%">次選單數</td>
 					<td width="10%">顯示</td>
 					<td width="10%">刪除</td>
 					<td></td>
@@ -19,20 +21,27 @@
 				foreach ($rows as $row) {
 				?>
 					<tr class="cent">
-						<td width="70%">
-							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 100px;height:68px;">
+						<td width="30%">
+							<input type="text" name="href[]" id="txt" value="<?= $row['href']; ?>" style="width:98%">
 						</td>
-
+						<td width="30%">
+							<input type="txt" name="txt[]" value="<?= $row['txt'] ?>" style="width:98%">
+						</td>
 						<td width="10%">
-							<input type="radio" name="show" value="<?= $row['id'] ?>" <?= ($row['show'] == 1) ? "checked" : ""; ?>>
+
+						</td>
+						<td width="10%">
+							<input type="checkbox" name="sh[]" value="<?= $row['id']; ?>">
 						</td>
 						<td width="10%">
 							<input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
 						</td>
-						<td><input type='button' value='更新圖片' onclick="op('#cover','#cvr','./modals/<?= $do; ?>_update.php?id=<?= $row['id']; ?>')"></td>
-						<td>
-							<input type="hidden" name="id[]" value="<?= $row['id'] ?>">
+						<td width="10%">
+							<input type="button" name="" value="編輯次選單">
 						</td>
+
+						<input type="hidden" name="id[]" value="<?= $row['id'] ?>">
+
 					</tr>
 				<?php
 				}
