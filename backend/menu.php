@@ -29,7 +29,7 @@
 							<input type="txt" name="txt[]" value="<?= $row['txt'] ?>" style="width:98%">
 						</td>
 						<td width="10%">
-
+							<?= $Menu->count(['main_id' => $row['id']]); ?>
 						</td>
 						<td width="10%">
 							<input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['show'] == 1) ? 'checked' : ''; ?>>

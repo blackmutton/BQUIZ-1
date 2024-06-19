@@ -9,7 +9,7 @@ if (isset($_POST['id'])) {
     foreach ($_POST['id'] as $key => $id) {
         // print_r($key);
         // print_r($id);
-        if (!empty($_POST['del'] && in_array($id, $_POST['del']))) {
+        if (!empty($_POST['del']) && in_array($id, $_POST['del'])) {
 
             $db->del($id);
         } else {
@@ -20,29 +20,22 @@ if (isset($_POST['id'])) {
 
 
             $db->save($row);
-
-            
         }
     }
 }
 
 if (isset($_POST['txt2'])) {
-    foreach ($_POST['txt2'] as $key => $id) {
+    foreach ($_POST['txt2'] as $key => $txt) {
         // print_r($key);
         // print_r($id);
-        if ($txt !=''){
+        if ($txt != '') {
             $db->save([
-            'txt'=>$txt,
-            'href'=>$_POST['href2'][$key],
-            'main_id'=>$_POST['main_id']
+                'txt' => $txt,
+                'href' => $_POST['href2'][$key],
+                'main_id' => $_POST['main_id']
             ]);
-
-
-            
-
-            
         }
     }
 }
 
-to("../admin.php?do=$do");
+// to("../admin.php?do=$do");
