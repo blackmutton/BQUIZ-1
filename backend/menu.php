@@ -37,7 +37,7 @@
 							<input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
 						</td>
 						<td width="10%">
-							<input type="button" name="" value="編輯次選單">
+							<input type="button" name="" value="編輯次選單" onclick="op('#cover','#cvr','./modals/submenu.php?id=<?= $row['id']; ?>')">
 						</td>
 
 						<input type="hidden" name="id[]" value="<?= $row['id'] ?>">
@@ -51,7 +51,7 @@
 		<table style="margin-top:40px; width:70%;">
 			<tbody>
 				<tr>
-					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/<?= $do; ?>.php')" value="新增校園映像圖片"></td>
+					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./modals/<?= $do; ?>.php')" value="新增主選單"></td>
 					<td class="cent">
 						<input type="hidden" name="table" value=<?= $do; ?>>
 						<input type="submit" value="修改確定">
