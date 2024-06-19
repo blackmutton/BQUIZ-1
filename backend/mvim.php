@@ -24,7 +24,7 @@
 						</td>
 
 						<td width="10%">
-							<input type="radio" name="show" value="<?= $row['id'] ?>" <?= ($row['show'] == 1) ? "checked" : ""; ?>>
+							<input type="checkbox" name="show[]" value="<?= $row['id'] ?>" <?= ($row['show'] == 1) ? "checked" : ""; ?>>
 						</td>
 						<td width="10%">
 							<input type="checkbox" name="del[]" value="<?= $row['id']; ?>">

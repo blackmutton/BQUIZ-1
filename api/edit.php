@@ -31,11 +31,11 @@ foreach ($_POST['id'] as $key => $id) {
             case 'ad':
             case 'news':
                 $row['text'] = $_POST['text'][$key];
-                $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
+                $row['show'] = (isset($_POST['show']) && in_array($id, $_POST['show'])) ? 1 : 0;
                 break;
             case 'image':
             case 'mvim':
-                $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
+                $row['show'] = (isset($_POST['show']) && in_array($id, $_POST['show'])) ? 1 : 0;
         }
 
         $db->save($row);

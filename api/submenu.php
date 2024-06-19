@@ -38,4 +38,4 @@ if (isset($_POST['txt2'])) {
     }
 }
 
-// to("../admin.php?do=$do");
+to("../admin.php?do=$do");
