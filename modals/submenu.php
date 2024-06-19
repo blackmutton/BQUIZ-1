@@ -5,7 +5,7 @@ include_once "../api/base.php";
 <hr>
 
 <form action="./api/add.php" method="post" enctype="multipart/form-data">
-    <table style='width:70%;margin:auto;'>
+    <table style='width:70%;margin:auto;' id="submenu">
         <tr>
             <td>次選單名稱：</td>
             <td>次選單超連結：</td>
@@ -27,8 +27,19 @@ include_once "../api/base.php";
     </table>
     <div class="cent">
         <input type="hidden" name="table" value='menu'>
+        <input type="hidden" name="main_id" value="<?=$_GET['id']?>">
         <input type="submit" value="修改確定">
         <input type="reset" value="重置">
-        <input type="button" value="更多次選單">
+        <input type="button" value="更多次選單" onclick="addSub()">
     </div>
 </form>
+<script>
+    function addSub(){
+        let str=`<tr>
+                <td><input type="text" name="txt2[]"></td>
+                <td><input type="text" name="href2[]"></td>
+                <td></td>
+            </tr>`;
+            $("#submenu").append(str);
+    }
+</script>

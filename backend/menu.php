@@ -17,7 +17,7 @@
 				// $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 				// $rows=q("select * from title");
 				// $rows = ${ucfirst($do)}->all();
-				$rows = ${ucfirst($do)}->all(['main_id'=>0]);
+				$rows = ${ucfirst($do)}->all(['main_id' => 0]);
 				// print_r($rows);
 				foreach ($rows as $row) {
 				?>
@@ -32,7 +32,7 @@
 
 						</td>
 						<td width="10%">
-							<input type="checkbox" name="sh[]" value="<?= $row['id']; ?>">
+							<input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['show'] == 1) ? 'checked' : ''; ?>>
 						</td>
 						<td width="10%">
 							<input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
