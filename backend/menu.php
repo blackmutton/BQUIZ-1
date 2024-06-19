@@ -16,7 +16,8 @@
 				// $sql = "select * from title";
 				// $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 				// $rows=q("select * from title");
-				$rows = ${ucfirst($do)}->all();
+				// $rows = ${ucfirst($do)}->all();
+				$rows = ${ucfirst($do)}->all(['main_id'=>0]);
 				// print_r($rows);
 				foreach ($rows as $row) {
 				?>
