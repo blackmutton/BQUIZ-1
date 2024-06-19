@@ -19,6 +19,7 @@
 				$pages = ceil($total / $div);
 				$now = $_GET['p'] ?? 1;
 				$start = ($now - 1) * $div;
+				// limit 從array抓，所以第一筆資料是index 0，而不是看id，所以不會是1
 				$rows = ${ucfirst($do)}->all(" limit $start, $div");
 				// print_r($rows);
 				foreach ($rows as $row) {
