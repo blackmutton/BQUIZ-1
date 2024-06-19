@@ -14,38 +14,30 @@ foreach ($_POST['id'] as $key => $id) {
     } else {
 
         $row = $db->find($id);
-        /* switch($do){
+        switch ($do) {
             case 'admin':
-            break;
+                $row['acc'] = $_POST['acc'][$key];
+                $row['pw'] = $_POST['pw'][$key];
+                break;
             case 'menu':
-            break;
+                $row['href'] = $_POST['href'][$key];
+                $row['txt'] = $_POST['txt'][$key];
+                $row['show'] = (isset($_POST['show']) && $_POST['show'] == $id) ? 1 : 0;
+                break;
             case 'title':
-            break;
-            default:
-        } */
-        if (isset($_POST['txt'])) {
-            $row['txt'] = $_POST['txt'][$key];
+                $row['txt'] = $_POST['txt'][$key];
+                $row['show'] = (isset($_POST['show']) && $_POST['show'] == $id) ? 1 : 0;
+                break;
+            case 'ad':
+            case 'news':
+                $row['text'] = $_POST['text'][$key];
+                $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
+                break;
+            case 'image':
+            case 'mvim':
+                $row['sh'] = (isset($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
         }
-        if ($do == 'title') {
 
-            $row['show'] = (isset($_POST['show']) && $_POST['show'] == $id) ? 1 : 0;
-        } else {
-            if (isset($row['show'])) {
-
-                $row['show'] = (isset($_POST['show']) && in_array($id, $_POST['show']) == $id) ? 1 : 0;
-            } else {
-                switch ($do) {
-                    case 'admin';
-                        $row['acc'] = $_POST['acc'][$key];
-                        $row['pw'] = $_POST['pw'][$key];
-                        break;
-                    case 'menu';
-                        $row['href'] = $_POST['href'][$key];
-                        $row['txt'] = $_POST['txt'][$key];
-                        break;
-                }
-            }
-        }
         $db->save($row);
 
         // $Title->save($row);

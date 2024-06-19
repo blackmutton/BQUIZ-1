@@ -23,10 +23,10 @@
 				?>
 					<tr class="cent">
 						<td width="30%">
-							<input type="text" name="href[]" id="txt" value="<?= $row['href']; ?>" style="width:98%">
+							<input type="text" name="txt[]" value="<?= $row['txt'] ?>" style="width:98%">
 						</td>
 						<td width="30%">
-							<input type="txt" name="txt[]" value="<?= $row['txt'] ?>" style="width:98%">
+							<input type="text" name="href[]" value="<?= $row['href']; ?>" style="width:98%">
 						</td>
 						<td width="10%">
 							<?= $Menu->count(['main_id' => $row['id']]); ?>
