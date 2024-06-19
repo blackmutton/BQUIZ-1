@@ -1,11 +1,11 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-	<p class="t cent botli">管理員管理</p>
+	<p class="t cent botli">最新消息管理</p>
 	<form method="post" action="./api/edit.php">
 		<table width="100%">
 			<tbody>
 				<tr class="yel">
 					<td width="80%">最新消息</td>
-					<td width="10%">密碼</td>
+					<td width="10%">顯示</td>
 					<td width="10%">刪除</td>
 					<td></td>
 				</tr>
@@ -14,16 +14,22 @@
 				// $sql = "select * from title";
 				// $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 				// $rows=q("select * from title");
-				$rows = ${ucfirst($do)}->all();
+				$total = ${ucfirst($do)}->count();
+				$div = 4;
+				$pages = ceil($total / $div);
+				$now = $_GET['p'] ?? 1;
+				$start = ($now - 1) * $div;
+				// limit 從array抓，所以第一筆資料是index 0，而不是看id，所以不會是1
+				$rows = ${ucfirst($do)}->all(" limit $start, $div");
 				// print_r($rows);
 				foreach ($rows as $row) {
 				?>
 					<tr class="cent">
 						<td width="80%">
-							<textarea name="txt[]" id="txt" style="width:98%;height:60px" value="<?= $row['txt']; ?>"></textarea>
+							<textarea name="txt[]" id="txt" style="width:98%;height:60px"><?= $row['txt']; ?></textarea>
 						</td>
 						<td width="10%">
-							<input type="checkbox" name="sh[]" value="<?= $row['id'] ?>" <?= ($row['sh'] == 1) ? "checked" : ""; ?>>
+							<input type="checkbox" name="show[]" value="<?= $row['id'] ?>" <?= ($row['show'] == 1) ? "checked" : ""; ?>>
 						</td>
 						<td width="10%">
 							<input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
@@ -37,6 +43,30 @@
 				?>
 			</tbody>
 		</table>
+		<div class='cent'>
+			<?php
+			if ($now - 1 >= 1) {
+				$prev = $now - 1;
+				echo "<a href='?do=$do&p=$prev'> ";
+				echo "&lt;";
+				// echo "<";
+				echo " </a>";
+			}
+			for ($i = 1; $i <= $pages; $i++) {
+				$size = ($i == $now) ? "24px" : "18px";
+				echo "<a href='?do=$do&p=$i'style='font-size:$size;'> ";
+				echo $i;
+				echo " </a>";
+			}
+			if ($now + 1 <= $pages) {
+				$next = $now + 1;
+				echo "<a href='?do=$do&p=$next'> ";
+				echo "&gt;";
+				// echo ">";
+				echo " </a>";
+			}
+			?>
+		</div>
 		<table style="margin-top:40px; width:70%;">
 			<tbody>
 				<tr>
