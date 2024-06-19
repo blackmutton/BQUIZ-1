@@ -4,8 +4,8 @@
 		<table width="100%">
 			<tbody>
 				<tr class="yel">
-					<td width="80%">帳號</td>
-					<td width="10%">密碼</td>
+					<td width="45%">帳號</td>
+					<td width="45%">密碼</td>
 					<td width="10%">刪除</td>
 					<td></td>
 				</tr>

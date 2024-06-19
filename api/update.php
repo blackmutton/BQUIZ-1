@@ -4,7 +4,7 @@ $do = $_POST['table'];
 $db = ${ucfirst($do)};
 
 if (!empty($_FILES['img']['tmp-name'])) {
-    move_uploaded_file($_FILES['img']['tmp-name'], "../images" . $_FILES['img']['name']);
+    move_uploaded_file($_FILES['img']['tmp-name'], "../images/" . $_FILES['img']['name']);
     $row=$db->find($_POST['id']);
     $row['img']=$_FILES['img']['name'];
     $db->save($row);

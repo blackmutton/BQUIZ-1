@@ -4,7 +4,7 @@ $do = $_POST['table'];
 $db = ${ucfirst($do)};
 
 if (!empty($_FILES['img']['tmp_name'])) {
-    move_uploaded_file($_FILES['img']['tmp_name'], "../images" . $_FILES['img']['name']);
+    move_uploaded_file($_FILES['img']['tmp_name'], "../images/" . $_FILES['img']['name']);
     $_POST['img'] = $_FILES['img']['name'];
 }
 
