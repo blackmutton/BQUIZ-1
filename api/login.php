@@ -1,7 +1,10 @@
 <?php
 session_start();
 include_once "base.php";
-if ($_POST['acc'] == 'admin' && $_POST['pw'] == '1234') {
+// if ($_POST['acc'] == 'admin' && $_POST['pw'] == '1234') {
+$chk=$Admin->count(['acc'=>$_POST['acc'],'pw'=>$_POST['pw']]);
+
+if($chk){
     $_SESSION['login'] = 1;
     to("../admin.php");
     exit();
