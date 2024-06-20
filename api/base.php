@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class DB
 {
     protected $table;
@@ -56,7 +56,7 @@ class DB
             $sql = "insert into `$this->table`(`" . join("`,`", $keys) . "`)
                  values('" . join("','", $arg) . "')";
         }
-        echo $sql;
+        // echo $sql;
         return $this->pdo->exec($sql);
     }
     public function del($arg)
@@ -127,3 +127,10 @@ $Menu = new DB('menu');
 $Admin = new DB('admin');
 $Bottom = new DB('bottom');
 $Total = new DB('views');
+
+if (!isset($_SESSION['view'])) {
+    $total = $Total->find(1);
+    $total['view']++;
+    $Total->save($total);
+    $_SESSION['view'] = $total['view'];
+}
