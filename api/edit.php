@@ -22,7 +22,7 @@ foreach ($_POST['id'] as $key => $id) {
             case 'menu':
                 $row['href'] = $_POST['href'][$key];
                 $row['txt'] = $_POST['txt'][$key];
-                $row['show'] = (isset($_POST['show']) && $_POST['show'] == $id) ? 1 : 0;
+                $row['show'] = (isset($_POST['show']) && in_array($id, $_POST['show'])) ? 1 : 0;
                 break;
             case 'title':
                 $row['txt'] = $_POST['txt'][$key];
