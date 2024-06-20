@@ -20,7 +20,7 @@
 				?>
 					<tr class="cent">
 						<td width="70%">
-							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 200px;height:200px;">
+							<img src="./images/<?= $row['img']; ?>" alt="" srcset="" style="width: 100px;height:100px;">
 						</td>
 
 						<td width="10%">
