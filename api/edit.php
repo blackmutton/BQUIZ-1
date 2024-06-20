@@ -30,7 +30,7 @@ foreach ($_POST['id'] as $key => $id) {
                 break;
             case 'ad':
             case 'news':
-                $row['text'] = $_POST['text'][$key];
+                $row['txt'] = $_POST['txt'][$key];
                 $row['show'] = (isset($_POST['show']) && in_array($id, $_POST['show'])) ? 1 : 0;
                 break;
             case 'image':
