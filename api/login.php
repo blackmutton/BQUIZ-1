@@ -1,8 +1,10 @@
 <?php
 
 include_once "base.php";
-// if ($_POST['acc'] == 'admin' && $_POST['pw'] == '1234') {
-$chk=$Admin->count(['acc'=>$_POST['acc'],'pw'=>$_POST['pw']]);
+// 為預防sql injection所做的字串轉換，能將特殊字元轉換，例如'變成&#39;
+$acc = htmlspecialchars($_POST['acc']);
+$pw = htmlspecialchars($_POST['pw']);
+$chk=$Admin->count(['acc'=>$acc,'pw'=>$pw]);
 
 if($chk){
     $_SESSION['login'] = 1;
