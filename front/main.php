@@ -1,16 +1,16 @@
 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-
         <?php
-        $ad = $Ad->all(['show' => 1]);
+        $ad = $Ad->all(['sh' => 1]);
         foreach ($ad as $a) {
-            echo $a['txt'];
+            echo $a['text'];
             echo "&nbsp;&nbsp;&nbsp;";
         }
         ?>
     </marquee>
     <div style="height:32px; display:block;"></div>
     <!--正中央-->
+
     <div style="width:100%; padding:2px; height:290px;">
         <div id="mwww" loop="true" style="width:100%; height:100%;">
             <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
@@ -19,11 +19,13 @@
     <script>
         var lin = new Array();
         <?php
-        $mv = $Mvim->all(['show' => 1]);
+
+        $mv = $Mvim->all(['sh' => 1]);
         foreach ($mv as $m) {
             echo "lin.push('images/{$m['img']}');";
         }
         ?>
+
         var now = 0;
         if (lin.length > 1) {
             setInterval("ww()", 3000);
@@ -37,26 +39,29 @@
             if (now >= lin.length)
                 now = 0;
         }
-        ww();
+
+        ww()
     </script>
 
     <div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
         <span class="t botli">最新消息區
             <?php
-            if ($News->count(['show' => 1]) > 5) {
-                echo "<a href='index.php?do=news'style='float:right'>More...</a>";
+            if ($News->count(['sh' => 1]) > 5) {
+                echo "<a href='index.php?do=news' style='float:right'>More...</a>";
             }
             ?>
         </span>
         <ul class="ssaa" style="list-style-type:decimal;">
             <?php
-            $news = $News->all(['show' => 1]);
+            $news = $News->all(['sh' => 1], " limit 5");
             foreach ($news as $n) {
                 echo "<li>";
-                echo mb_substr($n['txt'], 0, 25);
-                echo "<span class='all' style='display:none'>{$n['txt']}</span>";
+                echo mb_substr($n['text'], 0, 25);
+                echo "<span class='all' style='display:none'>{$n['text']}</span>";
                 echo "</li>";
             }
+
+
             ?>
         </ul>
         <div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
@@ -72,12 +77,13 @@
                     $("#altt").hide()
                 }
             )
+
             $("#altt").hover(
                 function() {
-                    $("#altt").show();
+                    $("#altt").show()
                 },
                 function() {
-                    $("#altt").hide();
+                    $("#altt").hide()
                 }
             )
         </script>

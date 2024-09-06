@@ -1,6 +1,4 @@
-<?php
-include "./api/base.php";
-?>
+<?php include_once "./api/base.php"; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,7 +9,7 @@ include "./api/base.php";
 	<title>卓越科技大學校園資訊系統</title>
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-3.4.1.min.js"></script>
-	<script src="../js/js.js"></script>
+	<script src="./js/js.js"></script>
 </head>
 
 <body>
@@ -24,10 +22,9 @@ include "./api/base.php";
 
 	<div id="main">
 		<?php
-		$title = $Title->find(['show' => 1]);
-
+		$title = $Title->find(['sh' => 1]);
 		?>
-		<a title="<?= $title['txt']; ?>" href="index.php">
+		<a title="<?= $title['text']; ?>" href="index.php">
 			<div class="ti" style="background:url(&#39;images/<?= $title['img']; ?>&#39;); background-size:cover;"></div><!--標題-->
 		</a>
 		<div id="ms">
@@ -36,12 +33,12 @@ include "./api/base.php";
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
 					<?php
-					$main = $Menu->all(['show' => 1, 'main_id' => 0]);
+					$main = $Menu->all(['sh' => 1, 'main_id' => 0]);
 					foreach ($main as $m) {
 					?>
 						<div class="mainmu">
 							<a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $m['href']; ?>">
-								<?= $m['txt']; ?>
+								<?= $m['text']; ?>
 							</a>
 							<?php
 							if ($Menu->count(['main_id' => $m['id']]) > 0) {
@@ -50,7 +47,7 @@ include "./api/base.php";
 								foreach ($sub as $s) {
 							?>
 									<div class="mainmu2">
-										<a href='<?= $s['href']; ?>'><?= $s['txt']; ?></a>
+										<a href='<?= $s['href']; ?>'><?= $s['text']; ?></a>
 									</div>
 							<?php
 								}
@@ -61,6 +58,7 @@ include "./api/base.php";
 					<?php
 					}
 					?>
+
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
@@ -69,31 +67,17 @@ include "./api/base.php";
 				</div>
 			</div>
 			<?php
+
 			$do = $_GET['do'] ?? 'main';
 			$file = "./front/{$do}.php";
 			if (file_exists($file)) {
 				include $file;
 			} else {
-
-				include_once "./front/main.php";
+				include "./front/main.php";
 			}
+
 			?>
-			<div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
-			<script>
-				$(".sswww").hover(
-					function() {
-						$("#alt").html("" + $(this).children(".all").html() + "").css({
-							"top": $(this).offset().top - 50
-						})
-						$("#alt").show()
-					}
-				)
-				$(".sswww").mouseout(
-					function() {
-						$("#alt").hide()
-					}
-				)
-			</script>
+
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
 				<?php if (!isset($_SESSION['login'])) : ?>
@@ -103,25 +87,24 @@ include "./api/base.php";
 				<?php endif; ?>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
-					<div class="cent" onclick='pp(1)' style='margin:5px 0;'>
+					<div class='cent' onclick='pp(1)' style="margin:5px 0">
 						<img src="./icon/up.jpg" alt="">
 					</div>
 					<?php
-					$ims = $Image->all(['show' => 1]);
+					$ims = $Image->all(['sh' => 1]);
 					foreach ($ims as $key => $im) {
 					?>
-						<div class='im cent' id='ssaa<?= $key; ?>' style='margin:2px 0;'>
-							<img src="./images/<?= $im['img'] ?>" alt="" style="width:150px;height:103px;border:2px solid orange;">
+						<div class='im cent' id='ssaa<?= $key; ?>' style='margin:2px 0'>
+							<img src="./images/<?= $im['img']; ?>" style="width:150px;height:103px;border:2px solid orange;">
 						</div>
-					<?php
-					}
-					?>
-					<div class="cent" onclick='pp(2)' style='margin:5px 0;'>
-						<img src="./icon/dn.jpg" alt="">
+					<?php  }	?>
+
+					<div class='cent' onclick='pp(2)' style="margin:5px 0">
+						<img src="./icon/down.jpg" alt="">
 					</div>
 					<script>
 						var nowpage = 0,
-							num = <?= $Image->count(['show' => 1]) ?>;
+							num = <?= $Image->count(['sh' => 1]); ?>;
 
 						function pp(x) {
 							var s, t;
